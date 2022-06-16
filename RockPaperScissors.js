@@ -6,7 +6,7 @@ const computerPlay = () => {
 };
 function Game(userSelectionItem, computerSelection) {
   computerSelection = computerPlay();
-  let userSelectionPlay = prompt("Do you want play?");
+  let userSelectionPlay = prompt("Do you want to play?");
   if (userSelectionPlay !== "yes") {
     throw "ok exiting the game";
   } else {
