@@ -6,8 +6,6 @@ const computerPlay = () => {
 };
 function playRound(userSelectionItem, computerSelection) {
   computerSelection = computerPlay();
-  console.log(computerSelection);
-
   let userSelectionPlay = prompt("Do you want to play?");
   if (userSelectionPlay.toUpperCase() !== "YES") {
     throw "ok exiting the game";
@@ -35,6 +33,9 @@ function playRound(userSelectionItem, computerSelection) {
   if (computerSelection == "scissors" && userSelectionItem == "rock") {
     winner = "You Win!";
   }
+  if (computerSelection == userSelectionItem) {
+    winner = "Draw";
+  }
   return winner;
 }
 
@@ -44,15 +45,16 @@ function Game(userScore, computerScore) {
 
   for (let i = 0; i < 5; i++) {
     playRound();
-    if (!winner.includes("Win") && !winner.includes("Lose")) {
-      userScore++;
-      computerScore++;
-    }
     if (winner.includes("Win") == true) {
       userScore++;
     }
+    if (winner.includes("Draw") == true) {
+      userScore++;
+      computerScore++;
+    }
     if (winner.includes("Lose") == true) {
       computerScore++;
+      console.log(winner)
     }
     console.log(`${computerScore} : ${userScore}`);
     if (i == 4 && computerScore > userScore) {
